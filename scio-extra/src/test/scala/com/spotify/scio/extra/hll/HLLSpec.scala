@@ -21,7 +21,11 @@ import com.spotify.scio.testing.PipelineSpec
 
 trait HLLSpec extends PipelineSpec {
 
-  def checkWithErrorRate(actual: Seq[Long], expected: Seq[Long], errorRate: Double): Unit = {
+  def checkWithErrorRate(
+    actual: Iterable[Long],
+    expected: Iterable[Long],
+    errorRate: Double
+  ): Unit = {
     (actual zip expected)
       .foreach { case (act, expt) =>
         val error = ((expt / 100) * errorRate).toLong
@@ -31,8 +35,8 @@ trait HLLSpec extends PipelineSpec {
   }
 
   def checkWithErrorRatePerKey[K](
-    actual: Seq[(K, Long)],
-    expected: Seq[(K, Long)],
+    actual: Iterable[(K, Long)],
+    expected: Iterable[(K, Long)],
     errorRate: Double
   ): Unit = {
     val ex = expected.toMap

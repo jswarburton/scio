@@ -35,8 +35,8 @@ class SketchingHyperLogLogPlusPlusTest extends HLLSpec {
 
     val upperLimit = 1000000
     val in = 0 to upperLimit
-    val expt: Seq[(Int, Long)] = for (i <- 0 to 20) yield (i, upperLimit / 20)
-    val output: Seq[(Int, Long)] = runWithData(in) { scl =>
+    val expt = for (i <- 0 to 20) yield (i, (upperLimit / 20).toLong)
+    val output = runWithData(in) { scl =>
       scl
         .keyBy(_ % 20)
         .countApproxDistinctByKey(new SketchingHyperLogLogPlusPlus[Int](15, 20))

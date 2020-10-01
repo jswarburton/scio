@@ -65,7 +65,7 @@ class ZetasketchHllIntCounterTest extends HLLSpec {
     val estimator = ZetasketchHllIntCounter()
     val upperLimit = 10000
     val in = 0 to upperLimit
-    val expt: Seq[(Int, Long)] = for (i <- 0 to 5) yield (i, upperLimit / 5)
+    val expt = for (i <- 0 to 5) yield (i, (upperLimit / 5).toLong)
     val output = runWithData(in) { scl =>
       scl
         .keyBy(_ % 5)
