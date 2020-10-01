@@ -89,7 +89,8 @@ class BigtableIT extends PipelineSpec {
     bt.getClusterNodeCount(clusterId, zoneId) shouldBe 3
   }
 
-  "BigtableIO" should "work" in {
+//  "BigtableIO" should "work" in {
+  ignore should "work" in {
     TableAdmin.ensureTables(bigtableOptions, Map(tableId -> List(FAMILY_NAME)))
     try {
       // Write rows to table
