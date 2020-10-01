@@ -22,7 +22,7 @@ trait ApproxPipelineSpec extends PipelineSpec {
   /**
    * Check corresponding expected value is off by error rate percentage.
    * i.e.  if actual value is `A`, expected values is `B` with error rate `E`, then assert following.
-   *  (A - ((A / 100) * E)) <= B <= (A + ((A / 100) * E)
+   *  (B - ((B / 100) * E)) <= A <= (B + ((B / 100) * E)
    *
    *  Assert above for each element pair.
    * @param actual - Actual values
@@ -46,7 +46,7 @@ trait ApproxPipelineSpec extends PipelineSpec {
   /**
    * Similar to above but works with tuples. Check corresponding expected value is off by error rate percentage.
    * i.e.  if acutal value is `A`, expected values is `B` with error rate `E`, then assert following.
-   *  (A - ((A / 100) * E)) <= B <= (A + ((A / 100) * E)
+   *  (B - ((B / 100) * E)) <= A <= (B + ((B / 100) * E)
    *
    *  Assert above for each key in the actual.
    * @param actual - Actual (key, value) pairs
